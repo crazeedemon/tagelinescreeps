@@ -5,11 +5,13 @@ module.exports = {
         if (creep.memory.working == true && creep.carry.energy <= 0) {
             // switch state
             creep.memory.working = false;
+            creep.say('🔄 harvest');
         }
         // if creep is harvesting energy but is full
         else if (creep.memory.working == false && creep.carry.energy >= creep.carryCapacity) {
             // switch state
             creep.memory.working = true;
+            creep.say('▲ upgrade');
         }
 
         // if creep is supposed to transfer energy to the controller
@@ -20,7 +22,7 @@ module.exports = {
             // try to upgrade the controller
             if (creep.transfer(creep.room.controller, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 // if not in range, move towards the controller
-                creep.moveTo(creep.room.controller);
+                creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }
         // if creep is supposed to harvest energy from source
@@ -30,7 +32,7 @@ module.exports = {
             // try to harvest energy, if the source is not in range
             if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
                 // move towards the source
-                creep.moveTo(source);
+                creep.moveTo(source, {visualizePathStyle: {stroke: '#ffffff'}});
             }
         }
     }

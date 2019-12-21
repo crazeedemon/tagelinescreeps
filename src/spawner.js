@@ -1,14 +1,14 @@
 var spawner = {
     spawn: function () {
         // goal: have 5 harvesters and as many upgraders as possible
-        var minimumNumberOfHarvesters = 3;
+        var name = undefined;
+        var minimumNumberOfHarvesters = 2;
         // _.sum will count the number of properties in Game.creeps filtered by the
         //  arrow function, which checks for the creep being a harvester
         var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == 'harvester');
-        var name = undefined;
         var _type = ''
         // goal have 5 upgraders
-        var minimumNumberOfUpgraders = 4;
+        var minimumNumberOfUpgraders = 5;
         // _.sum will count the number of properties in Game.creeps filtered by the
         //  arrow function, which checks for the creep being a harvester
         var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader');

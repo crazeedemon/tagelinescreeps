@@ -4,7 +4,7 @@ var roleBuilder = require('role.builder');
 var spawner = require('spawner');
 
 module.exports.loop = function () {
-
+    spawner.spawn();
     var tower = Game.getObjectById('TOWER_ID');
     if(tower) {
         var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -32,5 +32,4 @@ module.exports.loop = function () {
             roleBuilder.run(creep);
         }
     }
-    spawner.spawn();
 }

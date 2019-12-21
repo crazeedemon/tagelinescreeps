@@ -20,10 +20,14 @@ var roleBuilder = {
                 }
             }
         }
+        // if creep is supposed to harvest energy from source
         else {
-            var sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+            // find closest source
+            var source = creep.pos.findClosestByPath(FIND_SOURCES_ACTIVE);
+            // try to harvest energy, if the source is not in range
+            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
+                // move towards the source
+                creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
             }
         }
     }
