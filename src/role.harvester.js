@@ -11,7 +11,7 @@ module.exports = {
         else if (creep.memory.working == false && creep.carry.energy == creep.carryCapacity) {
             // switch state
             creep.memory.working = true;
-            creep.say('✉ delivery');
+            creep.say('📩 delivery');
         }
 
         // if creep is supposed to transfer energy to the spawn
@@ -20,6 +20,16 @@ module.exports = {
             if (creep.transfer(Game.spawns.Crazeedemon, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 // move towards the spawn
                 creep.moveTo(Game.spawns.Crazeedemon, {visualizePathStyle: {stroke: '#ffffff'}});
+            }
+            else if(Game.getObjectById('EXTENSION_ID')) {
+                var extension = Game.getObjectById('EXTENSION_ID')
+                console.log('found extension')
+                var closestEmptyExtension = extension.pos.findClosestByRange(FIND_STRUCTURES);
+                if(closestEmptyExtension){
+                    if (creep.transfer(closestEmptyExtension, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE)
+
+                    creep.moveTo(Game.getObjectById('5dfdb70dd8a9ed8422b1daff'), {visualizePathStyle: {stroke: '#ffffff'}});
+                }
             }
         }
         // if creep is supposed to harvest energy from source
