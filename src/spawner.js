@@ -2,19 +2,19 @@ module.exports = {
     spawn: function () {
         // goal: have 5 harvesters and as many upgraders as possible
         var name = '';
-        var minimumNumberOfHarvesters = 3;
+        var minimumNumberOfHarvesters = 4;
         // _.sum will count the number of properties in Game.creeps filtered by the
         //  arrow function, which checks for the creep being a harvester
         var numberOfHarvesters = _.sum(Game.creeps, (c) => c.memory.role == 'harvester');
         var _type = '';
         // goal have 5 upgraders
-        var minimumNumberOfUpgraders = 4;
+        var minimumNumberOfUpgraders = 6;
         // _.sum will count the number of properties in Game.creeps filtered by the
         //  arrow function, which checks for the creep being a harvester
         var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader');
 
         // goal have 5 builders
-        var minimumNumberOfbuilders = 6;
+        var minimumNumberOfbuilders = 0;
         // _.sum will count the number of properties in Game.creeps filtered by the
         //  arrow function, which checks for the creep being a harvester
         var numberOfbuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder');
